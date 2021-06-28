@@ -1,7 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import classes from "./NavBar.module.css";
 
-const NavBar = () => {
+
+const Hamburger = props => (
+  <button className={classes.hamburger} onClick={props.click}>
+    <div />
+    <div />
+    <div />
+  </button>
+);
+
+const NavBar = (props) => {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>Project Title</div>
@@ -29,6 +38,7 @@ const NavBar = () => {
           </li>
         </ul>
       </nav>
+      <Hamburger click={props.clickDropDown}/>
     </header>
   );
 }

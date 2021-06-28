@@ -5,7 +5,7 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  background-color: #e7f8f8;
+  background-color: #292D33;
 }
 
 .centered {
@@ -34,8 +34,8 @@ body {
 
 .btn:hover,
 .btn:active {
-  background-color: #white;
-  border-color: #white;
+  background-color: #EA6711;
+  border-color: #fff;
 }
 
 .btn--flat {
