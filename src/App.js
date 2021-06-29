@@ -31,7 +31,7 @@ function App() {
   return (
     <div>
       <NavBar clickDropDown={clickDropDownHandler}/>
-      {showDropDown&&<DropDownMenu show={showDropDown}/>}
+      <DropDownMenu show={showDropDown}/>
       {backdrop}
 
       <Switch>
