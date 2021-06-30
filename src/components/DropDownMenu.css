@@ -1,7 +1,7 @@
 .dropdown {
   height: 40%;
   background: white;
-  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 2px 0px 5px; */
   position: fixed;
   top: 0;
   left: 0;

@@ -13,7 +13,10 @@ const Hamburger = props => (
 const NavBar = (props) => {
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Project Title</div>
+
+      <div >
+        <a className={classes.logo} href="/">Minimal Typing</a>
+      </div>
       <nav className={classes.nav}>
         <ul>
           <li>
@@ -38,7 +41,7 @@ const NavBar = (props) => {
           </li>
         </ul>
       </nav>
-      <Hamburger click={props.clickDropDown}/>
+      <Hamburger click={props.clickDropDown} />
     </header>
   );
 }
