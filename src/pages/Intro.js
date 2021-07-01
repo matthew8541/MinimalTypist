@@ -1,4 +1,4 @@
-import classes from "./Intro.module.css"
+// import classes from "./Intro.module.css"
 import React, { useEffect } from 'react'
 
 const Intro = () => {

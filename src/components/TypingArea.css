@@ -2,8 +2,23 @@
     padding: 3px;
     margin: 3px;
     font-size: 1.3rem;
+    /* border-color: black; */
 }
 
-.wrapper {
-
+.word.new {
+    color: grey;
 }
+
+.word.correct {
+    color: white;
+}
+
+.word.incorrect {
+    color: #E32800;
+    color: #EA6711;
+}
+
+.typing {
+    flex-direction: column;
+}
+
