@@ -1,5 +1,5 @@
 .dropdown {
-  height: 40%;
+  height: auto;
   background: white;
   /* box-shadow: 2px 0px 5px; */
   position: fixed;
@@ -27,14 +27,14 @@
   margin: 0.5rem 0;
 }
 
-.dropdown a {
+.link {
   text-decoration: none;
   color: #292D33;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
-.dropdown a:hover, .dropdown a:active {
+.link:hover, .link:active {
   color: #FFA500;
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import "./DropDownMenu.css"
 
 const DropDownMenu = (props) => {
@@ -13,16 +14,16 @@ const DropDownMenu = (props) => {
     <nav className={dropdownClasses.join(" ")}>
       <ul>
         <li>
-          <a href="/home">Home</a>
+          <NavLink to='/home' className="link"> Home </NavLink>
         </li>
         <li>
-          <a href="/tab1">Tab1</a>
+          <NavLink to='/tab1' className="link"> tab1 </NavLink>
         </li>
         <li>
-          <a href="/tab2">Tab2</a>
+          <NavLink to='/tab2' className="link"> tab2 </NavLink>
         </li>
         <li>
-          <a href="/tab3">Tab3</a>
+          <NavLink to='/tab3' className="link"> tab3 </NavLink>
         </li>
       </ul>
     </nav>

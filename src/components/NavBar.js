@@ -15,7 +15,8 @@ const NavBar = (props) => {
     <header className={classes.header}>
 
       <div >
-        <a className={classes.logo} href={process.env.PUBLIC_URL}>Minimal Typing</a>
+        <NavLink to='/' className={classes.logo}>Minimal Typing</NavLink>
+        {/* <a className={classes.logo} href={process.env.PUBLIC_URL}>Minimal Typing</a> */}
       </div>
       <nav className={classes.nav}>
         <ul>
