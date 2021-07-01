@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { TextField, Button, Grid, makeStyles } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeGameStatus, incrementTotalWords} from '../store/counterSlice';
+import { changeGameStatus, incrementTotalWords } from '../store/counterSlice';
 import { vocab } from "../constants/vocabulary";
+import { START, PROGRESS, OVER } from "../constants/gameStatus";
+import { NEW, HIGHLIGHTED, CORRECT, WRONG } from '../constants/vocabStatus';
 import "./TypingArea.css";
 
 const useStyles = makeStyles({
@@ -21,10 +23,10 @@ const TypingArea = () => {
   const [input, setInput] = useState("");
   const [currentWords, setCurrentWords] = useState([]);
   const [nextWords, setNextWords] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const dispatch = useDispatch();
   const timer = useSelector((state) => state.counter.timer);
-  const totalWords = useSelector((state) => state.counter.totalWords);
   const gameStatus = useSelector((state) => state.counter.gameStatus);
 
   const materialStyles = useStyles();
@@ -35,6 +37,15 @@ const TypingArea = () => {
     setNextWords(getNewWords());
   }, [])
 
+  // When current word is changed or new words are generated
+	useEffect(() => {
+		setCurrentIndex(currentIndex);
+	}, [currentWords, currentIndex]);
+
+	useEffect(() => {
+		highlightCurrentWord();
+	}, [currentIndex, nextWords]);
+
   /**##########################
    *  Typing Helper Functions
    ############################*/
@@ -44,7 +55,7 @@ const TypingArea = () => {
       const randomWord = vocab[Math.floor(Math.random() * vocab.length)];
       newWords.push({
         word: randomWord,
-        status: "new"
+        status: NEW
       });
     }
     return newWords;
@@ -57,6 +68,42 @@ const TypingArea = () => {
     });
   }
 
+  const validateCurrentWord = () => {
+    const newCurrentWords = [...currentWords];
+    if (currentWords[currentIndex].word === input.trim()) {
+      newCurrentWords[currentIndex].status = CORRECT
+    }
+    else {
+      newCurrentWords[currentIndex].status = WRONG;
+    }
+    setCurrentWords(newCurrentWords);
+  };
+
+  const nextWord = () => {
+    validateCurrentWord();
+    if (currentIndex === currentWords.length - 1) {
+      setCurrentIndex(0);
+      // update new lines on the screen
+      setCurrentWords(nextWords);
+		  setNextWords(getNewWords());
+    } else {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const highlightCurrentWord = () => {
+    const newCurrentWords = [...currentWords];
+    if (newCurrentWords.length) {
+      newCurrentWords[currentIndex].status = HIGHLIGHTED;
+      setCurrentWords(newCurrentWords);
+    }
+  }
+
+  const compareInput = () => {
+    const curWord = currentWords[currentIndex].word;
+    return curWord.substring(0, input.length) === input;
+  };
+
   /**#########################
    *      Action Handlers
    ###########################*/
@@ -65,11 +112,13 @@ const TypingArea = () => {
   }
 
   const keyPressHandler = (event) => {
-    if (gameStatus === "start") {
-      dispatch(changeGameStatus({type: "progress"}))
+    if (gameStatus === START) {
+      dispatch(changeGameStatus({ type: PROGRESS }))
     }
-    if (event.key === " ") {
-      dispatch(incrementTotalWords())
+    // make sure the input is not blanks
+    if (event.key === " " && input.trim().length) {
+      nextWord();
+      dispatch(incrementTotalWords());
       setInput("");
     }
   }
@@ -85,6 +134,7 @@ const TypingArea = () => {
         <TextField
           autoFocus
           id="filled-basic"
+          error={!!input && !compareInput()}
           InputProps={{ className: materialStyles.textField_Input }}
           onChange={inputUpdateHandler}
           onKeyPress={keyPressHandler}
@@ -92,7 +142,7 @@ const TypingArea = () => {
         >
         </TextField>
       </div>
-      <Button variant="contained" color="primary" onClick={() => setInput("")}>Refresh</Button>
+      <Button variant="contained" color="primary" onClick={() => window.location.reload(false)}>Refresh</Button>
     </div>
   );
 }

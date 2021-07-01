@@ -3,6 +3,7 @@ import TypingArea from '../components/TypingArea';
 import Result from "../components/Result"
 import { useSelector, useDispatch } from 'react-redux';
 import { tictok, changeGameStatus } from '../store/counterSlice';
+import { START, PROGRESS, OVER } from "../constants/gameStatus";
 import "./Home.css"
 
 
@@ -16,9 +17,9 @@ const Home = () => {
   useEffect(() => {
     console.log("home useEffect")
     let interval = null;
-    if (gameStatus === "over") clearInterval(interval);
-    else if (timer <= 0) dispatch(changeGameStatus({ type: "over" }));
-    else if (gameStatus === "progress") {
+    if (gameStatus === OVER) clearInterval(interval);
+    else if (timer <= 0) dispatch(changeGameStatus({ type: OVER }));
+    else if (gameStatus === PROGRESS) {
       interval = setInterval(() => {
         dispatch(tictok());
       }, 1000);
@@ -28,8 +29,8 @@ const Home = () => {
 
   return (
     <div className="centered">
-      {gameStatus !== "over" && <TypingArea />}
-      {gameStatus === "over" && <Result />}
+      {gameStatus !== OVER && <TypingArea />}
+      {gameStatus === OVER && <Result />}
     </div>
   );
 };

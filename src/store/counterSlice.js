@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-const TIME = 5;
-const GAME_STATUS = {START: "start", PROGRESS: "progress", OVER: "over"};
+import { TIME, START } from "../constants/gameStatus";
+
 const initialState = {
   timer: TIME,
   totalWords: 0,
   correctWords: 0,
-  gameStatus: GAME_STATUS.START,
+  gameStatus: START,
   showResult: false
 }
 

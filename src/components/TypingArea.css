@@ -13,7 +13,13 @@
     color: white;
 }
 
-.word.incorrect {
+.word.highlighted {
+    /* border: #EA6711; */
+    background-color: gray;
+}
+
+
+.word.wrong {
     color: #E32800;
     color: #EA6711;
 }
@@ -21,4 +27,3 @@
 .typing {
     flex-direction: column;
 }
-
