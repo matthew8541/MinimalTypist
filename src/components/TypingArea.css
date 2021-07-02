@@ -15,9 +15,15 @@
 
 .word.highlighted {
     /* border: #EA6711; */
+    /* color: grey; */
     background-color: gray;
 }
 
+.word.highlightedError {
+    /* border: #EA6711; */
+    color: #EA6711;
+    background-color: #ea681175;
+}
 
 .word.wrong {
     color: #E32800;

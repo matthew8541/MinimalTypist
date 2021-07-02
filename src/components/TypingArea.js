@@ -3,8 +3,8 @@ import { TextField, Button, Grid, makeStyles } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeGameStatus, incrementTotalWords } from '../store/counterSlice';
 import { vocab } from "../constants/vocabulary";
-import { START, PROGRESS, OVER } from "../constants/gameStatus";
-import { NEW, HIGHLIGHTED, CORRECT, WRONG } from '../constants/vocabStatus';
+import { START, PROGRESS} from "../constants/gameStatus";
+import { NEW, HIGHLIGHTED, HIGHLIGHTEDERROR, CORRECT, WRONG } from '../constants/vocabStatus';
 import "./TypingArea.css";
 
 const useStyles = makeStyles({
@@ -20,22 +20,38 @@ const useStyles = makeStyles({
 })
 
 const TypingArea = () => {
-  const [input, setInput] = useState("");
-  const [currentWords, setCurrentWords] = useState([]);
-  const [nextWords, setNextWords] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [input, setInput] = useState(""); // the current input on the screen
+  const [currentWords, setCurrentWords] = useState([]); // the first line of the words
+  const [nextWords, setNextWords] = useState([]); // the second line of the words
+  const [currentIndex, setCurrentIndex] = useState(0); // the current index pointing at the word in the first line
 
+  /**###############
+   *    Redux
+   ################*/
   const dispatch = useDispatch();
   const timer = useSelector((state) => state.counter.timer);
   const gameStatus = useSelector((state) => state.counter.gameStatus);
 
-  const materialStyles = useStyles();
+  const materialStyles = useStyles(); // material-ui styles 
 
+  /**#########################
+   *          LifeCycle
+   ###########################*/
   // componentdidmount
   useEffect(() => {
     setCurrentWords(getNewWords());
     setNextWords(getNewWords());
   }, [])
+
+  // check whether the current input === current word
+  // --> Change the hightlighting styles
+  useEffect(() => {
+    if(input && !compareInput()) {
+      highlightWord(HIGHLIGHTEDERROR);
+    } else {
+      highlightWord(HIGHLIGHTED);
+    }
+  }, [input])
 
   // When current word is changed or new words are generated
 	useEffect(() => {
@@ -43,9 +59,10 @@ const TypingArea = () => {
 	}, [currentWords, currentIndex]);
 
 	useEffect(() => {
-		highlightCurrentWord();
+    highlightWord(HIGHLIGHTED);
 	}, [currentIndex, nextWords]);
 
+  
   /**##########################
    *  Typing Helper Functions
    ############################*/
@@ -83,25 +100,24 @@ const TypingArea = () => {
     validateCurrentWord();
     if (currentIndex === currentWords.length - 1) {
       setCurrentIndex(0);
-      // update new lines on the screen
-      setCurrentWords(nextWords);
-		  setNextWords(getNewWords());
+      setCurrentWords(nextWords); // update the current line on with the next one
+		  setNextWords(getNewWords()); // create a new line
     } else {
       setCurrentIndex(currentIndex + 1);
     }
   };
 
-  const highlightCurrentWord = () => {
+  const highlightWord = (style) => {
     const newCurrentWords = [...currentWords];
     if (newCurrentWords.length) {
-      newCurrentWords[currentIndex].status = HIGHLIGHTED;
+      newCurrentWords[currentIndex].status = style;
       setCurrentWords(newCurrentWords);
     }
   }
 
   const compareInput = () => {
-    const curWord = currentWords[currentIndex].word;
-    return curWord.substring(0, input.length) === input;
+    const currWord = currentWords[currentIndex].word;
+    return currWord.substring(0, input.length) === input;
   };
 
   /**#########################
@@ -134,7 +150,7 @@ const TypingArea = () => {
         <TextField
           autoFocus
           id="filled-basic"
-          error={!!input && !compareInput()}
+          // error={!!input && !compareInput()}
           InputProps={{ className: materialStyles.textField_Input }}
           onChange={inputUpdateHandler}
           onKeyPress={keyPressHandler}
