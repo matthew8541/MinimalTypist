@@ -1,6 +1,6 @@
 {
-  "name": "minimal-typing",
-  "homepage": "https://matthew8541.github.io/minimal-typing/",
+  "name": "minimal-typist",
+  "homepage": "https://matthew8541.github.io/minimal-typist/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
