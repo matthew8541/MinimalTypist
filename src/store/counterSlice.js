@@ -22,6 +22,9 @@ const counterSlice = createSlice({
     incrementTotalWords(state) {
       state.totalWords++;
     },
+    incrementCorrectWords(state) {
+      state.correctWords++;
+    },
     changeGameStatus(state, actions) {
       console.log(actions)
       state.gameStatus = actions.payload.type;
@@ -39,6 +42,7 @@ const counterSlice = createSlice({
 export const {
   tictok,
   incrementTotalWords,
+  incrementCorrectWords,
   changeGameStatus,
   resetTimer,
   setTotalWords

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { TextField, Button, Grid, makeStyles } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeGameStatus, incrementTotalWords } from '../store/counterSlice';
+import { changeGameStatus, incrementTotalWords, incrementCorrectWords } from '../store/counterSlice';
 import { vocab } from "../constants/vocabulary";
 import { START, PROGRESS} from "../constants/gameStatus";
 import { NEW, HIGHLIGHTED, HIGHLIGHTEDERROR, CORRECT, WRONG } from '../constants/vocabStatus';
@@ -88,7 +88,8 @@ const TypingArea = () => {
   const validateCurrentWord = () => {
     const newCurrentWords = [...currentWords];
     if (currentWords[currentIndex].word === input.trim()) {
-      newCurrentWords[currentIndex].status = CORRECT
+      newCurrentWords[currentIndex].status = CORRECT;
+      dispatch(incrementCorrectWords());
     }
     else {
       newCurrentWords[currentIndex].status = WRONG;
@@ -148,6 +149,7 @@ const TypingArea = () => {
       </div>
       <div className="typing">
         <TextField
+          autoComplete="off"
           autoFocus
           id="filled-basic"
           // error={!!input && !compareInput()}
