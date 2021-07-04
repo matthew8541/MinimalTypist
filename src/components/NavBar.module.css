@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  height: 4rem;
+  height: 3rem;
   display: flex;
   padding: 0 5%;
   justify-content: space-between;
@@ -9,7 +9,7 @@
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: #FFA500;
   text-decoration: none;
 }
@@ -24,7 +24,7 @@
 
 .nav li {
   margin-left: 1.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .nav a {

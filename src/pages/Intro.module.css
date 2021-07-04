@@ -3,5 +3,8 @@
     flex-direction: column;
     flex: 1;
     height: 300%;
-    background-image: url("../images/intro.jpeg");
 }
+
+/* .intro-body {
+    background-image: url("../images/intro.jpeg");
+} */

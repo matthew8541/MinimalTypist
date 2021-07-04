@@ -8,6 +8,11 @@ body {
   color: #fff;
   background-color: #292D33;
   min-width: 375px;
+  /* background-image: url("./images/intro.jpeg"); */
+}
+
+.intro-body {
+  background-image: url("./images/intro.jpeg");
 }
 
 .centered {

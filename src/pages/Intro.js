@@ -4,7 +4,7 @@ import classes from "./Intro.module.css"
 
 const Intro = () => {
   useEffect(() => {
-    // document.body.style.backgroundColor = "#292D33"
+    document.body.className = "intro-body";
   }, [])
   
   return (

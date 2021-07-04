@@ -15,6 +15,10 @@ const Home = () => {
   const gameStatus = useSelector((state) => state.counter.gameStatus);
 
   useEffect(() => {
+    document.body.className = "body";
+  }, [])
+
+  useEffect(() => {
     console.log("home useEffect")
     let interval = null;
     if (gameStatus === OVER) clearInterval(interval);
