@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { TextField, Button, Grid, makeStyles } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeGameStatus, incrementTotalWords, incrementCorrectWords } from '../store/counterSlice';
+import { changeGameStatus, incrementTotalWords, incrementCorrectWords, resetTimer } from '../store/counterSlice';
 import { vocab } from "../constants/vocabulary";
-import { START, PROGRESS} from "../constants/gameStatus";
+import { START, PROGRESS } from "../constants/gameStatus";
 import { NEW, HIGHLIGHTED, HIGHLIGHTEDERROR, CORRECT, WRONG } from '../constants/vocabStatus';
 import "./TypingArea.css";
 
@@ -46,7 +46,7 @@ const TypingArea = () => {
   // check whether the current input === current word
   // --> Change the hightlighting styles
   useEffect(() => {
-    if(input && !compareInput()) {
+    if (input && !compareInput()) {
       highlightWord(HIGHLIGHTEDERROR);
     } else {
       highlightWord(HIGHLIGHTED);
@@ -54,15 +54,15 @@ const TypingArea = () => {
   }, [input])
 
   // When current word is changed or new words are generated
-	useEffect(() => {
-		setCurrentIndex(currentIndex);
-	}, [currentWords, currentIndex]);
+  useEffect(() => {
+    setCurrentIndex(currentIndex);
+  }, [currentWords, currentIndex]);
 
-	useEffect(() => {
+  useEffect(() => {
     highlightWord(HIGHLIGHTED);
-	}, [currentIndex, nextWords]);
+  }, [currentIndex, nextWords]);
 
-  
+
   /**##########################
    *  Typing Helper Functions
    ############################*/
@@ -102,7 +102,7 @@ const TypingArea = () => {
     if (currentIndex === currentWords.length - 1) {
       setCurrentIndex(0);
       setCurrentWords(nextWords); // update the current line on with the next one
-		  setNextWords(getNewWords()); // create a new line
+      setNextWords(getNewWords()); // create a new line
     } else {
       setCurrentIndex(currentIndex + 1);
     }
@@ -160,7 +160,11 @@ const TypingArea = () => {
         >
         </TextField>
       </div>
-      <Button variant="contained" color="primary" onClick={() => window.location.reload(false)}>Refresh</Button>
+      <Button variant="contained" color="primary" onClick={() => {
+        dispatch(resetTimer())
+        setCurrentWords(getNewWords());
+        setNextWords(getNewWords());
+      }}>Refresh</Button>
     </div>
   );
 }
