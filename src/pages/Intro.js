@@ -1,5 +1,6 @@
 // import classes from "./Intro.module.css"
 import React, { useEffect } from 'react'
+import classes from "./Intro.module.css"
 
 const Intro = () => {
   useEffect(() => {
@@ -7,8 +8,9 @@ const Intro = () => {
   }, [])
   
   return (
-    <div>
-      <h1 className="centered">Intro Page</h1>
+    <div className={classes.intro}>
+      <h1 className="centered">Welcome to MinimalTypist</h1>
+      <h3 className="centered">Enjoy the minimalistic typing environment</h3>
     </div>
   );
 };

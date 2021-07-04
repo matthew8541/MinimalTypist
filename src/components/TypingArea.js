@@ -164,6 +164,7 @@ const TypingArea = () => {
         dispatch(resetTimer())
         setCurrentWords(getNewWords());
         setNextWords(getNewWords());
+        dispatch(changeGameStatus({ type: START }));
       }}>Refresh</Button>
     </div>
   );
