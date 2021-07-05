@@ -3,7 +3,7 @@ import TypingArea from '../components/TypingArea';
 import Result from "../components/Result"
 import { useSelector, useDispatch } from 'react-redux';
 import { tictok, changeGameStatus } from '../store/counterSlice';
-import { START, PROGRESS, OVER } from "../constants/gameStatus";
+import { PROGRESS, OVER } from "../constants/gameStatus";
 import "./Home.css"
 
 
@@ -11,7 +11,6 @@ import "./Home.css"
 const Home = () => {
   const dispatch = useDispatch();
   const timer = useSelector((state) => state.counter.timer);
-  // const totalWords = useSelector((state) => state.counter.totalWords);
   const gameStatus = useSelector((state) => state.counter.gameStatus);
 
   useEffect(() => {

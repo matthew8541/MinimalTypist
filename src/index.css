@@ -13,6 +13,8 @@ body {
 
 .intro-body {
   background-image: url("./images/intro.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .centered {
