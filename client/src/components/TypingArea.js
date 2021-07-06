@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { TextField, Button, Grid, makeStyles } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeGameStatus, incrementTotalWords, incrementCorrectWords, resetTimer } from '../store/counterSlice';
+import { changeGameStatus, incrementTotalWords, incrementCorrectWords, resetTimer } from '../store/slices/counterSlice';
 import { vocab } from "../constants/vocabulary";
 import { START, PROGRESS } from "../constants/gameStatus";
 import { NEW, HIGHLIGHTED, HIGHLIGHTEDERROR, CORRECT, WRONG } from '../constants/vocabStatus';

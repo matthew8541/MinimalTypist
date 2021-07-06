@@ -1,9 +1,9 @@
 require('dotenv').config()
 const express = require("express");
 const mongoose = require('mongoose');
-const app = express();
 const cors = require('cors');
 
+const app = express();
 const dbUrl = process.env.ATLAS_URI
 mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true }
 );
@@ -25,5 +25,3 @@ const port = 5000;
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
-
-

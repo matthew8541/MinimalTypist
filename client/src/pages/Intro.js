@@ -7,6 +7,9 @@ import { NavLink } from 'react-router-dom';
 const Intro = () => {
   useEffect(() => {
     document.body.className = "intro-body";
+    return () => {
+      document.body.className = "body";
+    }
   }, [])
 
   return (

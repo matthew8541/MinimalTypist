@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Button } from '@material-ui/core';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { changeGameStatus, resetTimer, setTotalWords } from '../store/counterSlice';
+import { changeGameStatus, resetTimer, setTotalWords } from '../store/slices/counterSlice';
 import { TIME } from '../constants/gameStatus';
 
 const Result = () => {

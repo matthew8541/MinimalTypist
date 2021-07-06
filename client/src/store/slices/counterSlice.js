@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { TIME, START } from "../constants/gameStatus";
+import { TIME, START } from "../../constants/gameStatus";
 
 const initialState = {
   timer: TIME,

@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 import classes from "./NavBar.module.css";
 
 
@@ -27,17 +28,17 @@ const NavBar = (props) => {
           </li>
           <li>
             <NavLink to='/tab1' activeClassName={classes.active}>
-              Tab1
+              Rank
             </NavLink>
           </li>
           <li>
             <NavLink to='/tab2' activeClassName={classes.active}>
-              Tab2
+              Profile
             </NavLink>
           </li>
           <li>
             <NavLink to='/tab3' activeClassName={classes.active}>
-              Tab3
+              Login
             </NavLink>
           </li>
         </ul>
