@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import { Button } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { logout } from '../store/slices/authSlice';
 import classes from "./NavBar.module.css";
 
 const Hamburger = props => (
@@ -13,14 +13,18 @@ const Hamburger = props => (
 );
 
 const NavBar = (props) => {
+  const dispatch = useDispatch();
   const isLogin = useSelector(state => state.auth.isLogin)
+
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
 
   return (
     <header className={classes.header}>
 
       <div >
         <NavLink to='/' className={classes.logo}>MinimalTypist</NavLink>
-        {/* <a className={classes.logo} href={process.env.PUBLIC_URL}>Minimal Typing</a> */}
       </div>
       <nav className={classes.nav}>
         <ul>
@@ -30,43 +34,47 @@ const NavBar = (props) => {
             </NavLink>
           </li>
           {
-            isLogin && 
+            isLogin &&
             <li>
-              <NavLink to='/rank' activeClassName={classes.active}>
+              <NavLink to='/ranking' activeClassName={classes.active}>
                 Rank
               </NavLink>
             </li>
           }
           {
-            isLogin && 
+            isLogin &&
             <li>
               <NavLink to='/profile' activeClassName={classes.active}>
                 Profile
               </NavLink>
             </li>
           }
-          <li>
-            <NavLink to='/login' activeClassName={classes.active}>
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/register' activeClassName={classes.active}>
-              Register
-            </NavLink>
-          </li>
+          {
+            !isLogin &&
+            <li>
+              <NavLink to='/login' activeClassName={classes.active}>
+                Login
+              </NavLink>
+            </li>
+          }
+          {
+            !isLogin &&
+            <li>
+              <NavLink to='/register' activeClassName={classes.active}>
+                Register
+              </NavLink>
+            </li>
+          }
+          {
+            isLogin &&
+            <li>
+              <a onClick={logoutHandler}>
+                Logout
+              </a>
+            </li>
+          }
         </ul>
       </nav>
-      {
-        isLogin &&
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => { }}
-        >
-          Logout
-        </Button>
-      }
       <Hamburger click={props.clickDropDown} />
     </header>
   );

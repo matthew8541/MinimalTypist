@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import {
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 import NavBar from "./components/NavBar"
@@ -17,6 +19,8 @@ import Profile from "./pages/Profile";
 
 function App() {
   const [showDropDown, setShowDropDown] = useState(false);
+
+  const isLogin = useSelector(state => state.auth.isLogin);
 
   const clickDropDownHandler = () => {
     setShowDropDown((prevState) => !prevState)
@@ -37,7 +41,6 @@ function App() {
       <NavBar clickDropDown={clickDropDownHandler}/>
       <DropDownMenu show={showDropDown}/>
       {backdrop}
-
       <Switch>
         <Route path="/" exact>
           <Intro />
@@ -49,7 +52,7 @@ function App() {
           <Register />
         </Route>
         <Route path="/login">
-          <Login />
+          {!isLogin ? <Login /> : <Redirect to="/home"/>}
         </Route>
         <Route path="/ranking">
           <Ranking />

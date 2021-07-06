@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import TypingArea from '../components/TypingArea';
 import Result from "../components/Result"
 import { useSelector, useDispatch } from 'react-redux';

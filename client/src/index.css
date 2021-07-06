@@ -61,3 +61,38 @@ body {
   background-color: white;
   color: white;
 }
+
+.userCard {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  background-color: #FFA500;
+  border-radius: 1rem;
+  width: 50%;
+  margin: 5rem auto;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  /* justify-content: center; */
+  padding: 3%;
+}
+
+.userCard form {
+  width: 100%;
+  padding: 0% 20%;
+}
+
+.userCard div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  align-items: flex-start;
+  font-weight: bold;
+}
+
+.userCard input {
+  float: left;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  height: 2rem;
+}
