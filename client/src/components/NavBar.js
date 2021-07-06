@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import classes from "./NavBar.module.css";
+import { useSelector } from 'react-redux';
 
+import classes from "./NavBar.module.css";
 
 const Hamburger = props => (
   <button className={classes.hamburger} onClick={props.click}>
@@ -12,6 +13,8 @@ const Hamburger = props => (
 );
 
 const NavBar = (props) => {
+  const isLogin = useSelector(state => state.auth.isLogin)
+
   return (
     <header className={classes.header}>
 
@@ -26,23 +29,44 @@ const NavBar = (props) => {
               Home
             </NavLink>
           </li>
+          {
+            isLogin && 
+            <li>
+              <NavLink to='/rank' activeClassName={classes.active}>
+                Rank
+              </NavLink>
+            </li>
+          }
+          {
+            isLogin && 
+            <li>
+              <NavLink to='/profile' activeClassName={classes.active}>
+                Profile
+              </NavLink>
+            </li>
+          }
           <li>
-            <NavLink to='/tab1' activeClassName={classes.active}>
-              Rank
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/tab2' activeClassName={classes.active}>
-              Profile
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/tab3' activeClassName={classes.active}>
+            <NavLink to='/login' activeClassName={classes.active}>
               Login
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/register' activeClassName={classes.active}>
+              Register
             </NavLink>
           </li>
         </ul>
       </nav>
+      {
+        isLogin &&
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => { }}
+        >
+          Logout
+        </Button>
+      }
       <Hamburger click={props.clickDropDown} />
     </header>
   );

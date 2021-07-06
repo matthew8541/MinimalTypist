@@ -1,19 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  isLogin: false,
-  username: null,
-  email: null,
+  ranking: []
 }
 
 const rankSlice = createSlice({
-  name: 'auth',
+  name: 'rank',
   initialState,
   reducers: {
-    fetchRanking() {
+    fetchRanking(state) {
 
     },
-    updateRanking() {
+    updateRanking(state) {
 
     }
   },
