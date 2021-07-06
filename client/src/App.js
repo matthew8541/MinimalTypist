@@ -33,13 +33,13 @@ function App() {
   let backdrop;
 
   if (showDropDown) {
-    backdrop = <BackDrop click={backDropHandler}/>
+    backdrop = <BackDrop click={backDropHandler} />
   }
 
   return (
     <div>
-      <NavBar clickDropDown={clickDropDownHandler}/>
-      <DropDownMenu show={showDropDown}/>
+      <NavBar clickDropDown={clickDropDownHandler} />
+      <DropDownMenu show={showDropDown} />
       {backdrop}
       <Switch>
         <Route path="/" exact>
@@ -52,7 +52,7 @@ function App() {
           <Register />
         </Route>
         <Route path="/login">
-          {!isLogin ? <Login /> : <Redirect to="/home"/>}
+          {!isLogin ? <Login /> : <Redirect to="/home" />}
         </Route>
         <Route path="/ranking">
           <Ranking />

@@ -68,9 +68,9 @@ const NavBar = (props) => {
           {
             isLogin &&
             <li>
-              <a onClick={logoutHandler}>
+              <NavLink to="/" onClick={logoutHandler}>
                 Logout
-              </a>
+              </NavLink>
             </li>
           }
         </ul>
