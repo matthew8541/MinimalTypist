@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
 
-// process.env.ATLAS_URI || 
-const dbUrl = "mongodb+srv://ytseng35:xfLZzyv6XKXNt7Eb@minimaltypist.rbwd9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const dbUrl = process.env.ATLAS_URI
 mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true }
 );
 
