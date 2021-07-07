@@ -12,16 +12,17 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login(state, actions) {
-      const {username, password} = actions.payload;
-      loginAction(username, password);
+      // const {email, password} = actions.payload;
+      loginAction(actions.payload);
       state.isLogin = true;
     },
     logout(state) {
       state.isLogin = false;
     },
     register(state, actions) {
-      const {username, email, password} = actions.payload;
-      console.log(actions.payload)
+      // const {username, email, password} = actions.payload;
+      // console.log(actions.payload)
+      registerAction(actions.payload);
       state.isLogin = true;
     }
   },

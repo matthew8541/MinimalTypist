@@ -1,20 +1,13 @@
 const axios = require("axios");
 
-export const loginAction = async (username, password) => {
-  await axios.post('/login', {
-    username,
-    password
-  })
+export const loginAction = async (authData) => {
+  await axios.post('/login', authData)
   .then((res) => {console.log(res)})
   .catch((err) => {console.log(err)});
 }
 
-export const registerAction = async (username, email, password) => {
-  await axios.post('/register', {
-    username,
-    email,
-    password
-  })
+export const registerAction = async (authData) => {
+  await axios.post('/register', authData)
   .then((res) => {console.log(res)})
   .catch((err) => {console.log(err)});
 }

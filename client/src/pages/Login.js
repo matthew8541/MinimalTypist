@@ -5,14 +5,14 @@ import { Button } from '@material-ui/core';
 import { login } from '../store/slices/authSlice';
 
 const Login = () => {
-  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isAuth, setIsAuth] = useState(null)
   const dispatch = useDispatch();
 
   const loginHandler = (event) => {
     event.preventDefault();
-    dispatch(login({ username, password }));
+    dispatch(login({ email, password }));
   };
 
   let authStyle;
@@ -27,10 +27,10 @@ const Login = () => {
       <h2>Login</h2>
       <form>
         <div>
-          <label htmlFor='username'>User</label>
-          <input type="username" id="username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+          <label htmlFor='email'>Email</label>
+          <input type="email" id="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div>
