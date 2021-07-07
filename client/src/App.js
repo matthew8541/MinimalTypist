@@ -42,27 +42,17 @@ function App() {
       <DropDownMenu show={showDropDown} />
       {backdrop}
       <Switch>
-        <Route path="/" exact>
-          <Intro />
-        </Route>
-        <Route path="/home">
-          <Home />
-        </Route>
+        <Route path="/" exact component={Intro} />
+        <Route path="/home" component={Home} />
         <Route path="/register">
-          <Register />
+          {!isLogin ? <Register /> : <Redirect to="/home" />}
         </Route>
         <Route path="/login">
           {!isLogin ? <Login /> : <Redirect to="/home" />}
         </Route>
-        <Route path="/ranking">
-          <Ranking />
-        </Route>
-        <Route path="/profile">
-          <Profile />
-        </Route>
-        <Route path='*'>
-          <NotFound />
-        </Route>
+        <Route path="/ranking" component={Ranking} />
+        <Route path="/profile" component={Profile} />
+        <Route path='*' component={NotFound} />
       </Switch>
     </div>
   );

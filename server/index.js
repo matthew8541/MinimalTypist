@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require("express");
 const mongoose = require('mongoose');
 const cors = require('cors');
+const passport = require("passport");
+const path = require("path");
 
 const app = express();
 const dbUrl = process.env.ATLAS_URI
@@ -25,7 +27,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/home', (req, res) => {
-  console.log("-->GET Home")
+  console.log("--> GET Home")
   res.send('Here is home')
 })
 
@@ -33,6 +35,12 @@ app.post('/login', (req, res) => {
   console.log("-->POST login")
   res.redirect("/home")
 })
+
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+  console.log("--> GET *")
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 const port = 5000;
 app.listen(port, () => {

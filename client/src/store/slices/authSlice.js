@@ -11,7 +11,8 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login(state) {
+    login(state, actions) {
+      const {email, password} = actions.payload;
       state.isLogin = true;
       axios.post('/login', {
         firstName: 'test',
@@ -23,13 +24,13 @@ const authSlice = createSlice({
       .catch(function (error) {
         console.log(error);
       });
-      // axios.get('/home');
     },
     logout(state) {
       state.isLogin = false;
     },
     register(state, actions) {
-
+      const {username, email, password} = actions.payload;
+      state.isLogin = true;
     }
   },
 })
