@@ -12,7 +12,6 @@ const Home = () => {
   const gameStatus = useSelector((state) => state.counter.gameStatus);
 
   useEffect(() => {
-    console.log("home useEffect")
     let interval = null;
     if (gameStatus === OVER) clearInterval(interval);
     else if (timer <= 0) dispatch(changeGameStatus({ type: OVER }));

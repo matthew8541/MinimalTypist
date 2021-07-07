@@ -8,6 +8,7 @@ const Register = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [isValid, setIsValid] = useState(null)
 
   const dispatch = useDispatch();
 
@@ -15,6 +16,13 @@ const Register = () => {
     event.preventDefault();
     dispatch(register({username, email, password}));
   };
+
+  let validStyle;
+  if (isValid == false) {
+    validStyle = {color: "red"}
+  } else {
+    validStyle = {visibility: "hidden"}
+  }
 
   return (
     <main className="centered userCard">
@@ -32,6 +40,7 @@ const Register = () => {
           <label htmlFor='password'>Password</label>
           <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
         </div>
+        <h4 style={validStyle}>Something went wrong</h4>
         <Button
           variant="contained"
           color="primary"

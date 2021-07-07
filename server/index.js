@@ -2,8 +2,9 @@ require('dotenv').config()
 const express = require("express");
 const mongoose = require('mongoose');
 const cors = require('cors');
-const passport = require("passport");
 const path = require("path");
+
+
 
 const app = express();
 const dbUrl = process.env.ATLAS_URI
@@ -23,21 +24,24 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Welcome to MinimalTypist')
 })
 
 app.get('/home', (req, res) => {
-  console.log("--> GET Home")
   res.send('Here is home')
 })
 
 app.post('/login', (req, res) => {
   console.log("-->POST login")
-  res.redirect("/home")
-})
+  const {email, password} = req.body
+});
+
+app.post('/register', async (req, res) => {
+  const {username, email, password} = req.body
+});
 
 // Handles any requests that don't match the ones above
-app.get('*', (req,res) =>{
+app.get('*', (req, res) =>{
   console.log("--> GET *")
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });

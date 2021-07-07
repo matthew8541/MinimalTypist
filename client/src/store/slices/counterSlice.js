@@ -28,7 +28,6 @@ const counterSlice = createSlice({
     changeGameStatus(state, actions) {
       console.log(actions)
       state.gameStatus = actions.payload.type;
-      console.log("Current Game Status", state.gameStatus);
     },
     setTotalWords(state, actions) {
       state.totalWords = actions.payload.amount;
