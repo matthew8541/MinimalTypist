@@ -41,6 +41,10 @@ const TypingArea = () => {
   useEffect(() => {
     setCurrentWords(getNewWords());
     setNextWords(getNewWords());
+
+    return () => {
+      restart()
+    }
   }, [])
 
   // check whether the current input === current word
@@ -123,6 +127,13 @@ const TypingArea = () => {
     return currWord.substring(0, input.length) === input;
   };
 
+  const restart = () => {
+    dispatch(resetTimer())
+    setCurrentWords(getNewWords());
+    setNextWords(getNewWords());
+    dispatch(changeGameStatus({ type: START }));
+  }
+
   /**#########################
    *      Action Handlers
    ###########################*/
@@ -162,12 +173,7 @@ const TypingArea = () => {
         >
         </TextField>
       </div>
-      <Button variant="contained" color="primary" onClick={() => {
-        dispatch(resetTimer())
-        setCurrentWords(getNewWords());
-        setNextWords(getNewWords());
-        dispatch(changeGameStatus({ type: START }));
-      }}>Refresh</Button>
+      <Button variant="contained" color="primary" onClick={restart}>Refresh</Button>
     </div>
   );
 }
