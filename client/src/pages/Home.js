@@ -21,6 +21,7 @@ const Home = () => {
       }, 1000);
     }
     return () => clearInterval(interval);
+    // eslint-disable-next-line
   }, [timer, gameStatus]);
 
   return (

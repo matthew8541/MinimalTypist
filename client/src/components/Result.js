@@ -15,6 +15,7 @@ const Result = () => {
     document.body.addEventListener('keydown', keyRestart);
 
     return () => document.body.removeEventListener("keydown", keyRestart);
+    // eslint-disable-next-line
   }, [])
 
   const restartHandler = () => {

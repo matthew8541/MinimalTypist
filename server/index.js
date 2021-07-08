@@ -34,15 +34,6 @@ app.get('/home', (req, res) => {
   res.send('Here is home')
 })
 
-// app.post('/login', (req, res) => {
-//   console.log("-->POST login")
-//   const {email, password} = req.body
-// });
-
-// app.post('/register', async (req, res) => {
-//   const {username, email, password} = req.body
-// });
-
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) =>{
   console.log("--> GET *")

@@ -1,13 +1,25 @@
 const axios = require("axios");
 
 export const loginAction = async (authData) => {
-  await axios.post('/login', authData)
-  .then((res) => {console.log(res)})
-  .catch((err) => {console.log(err)});
+  try {
+    const res = await axios.post('/login', authData);
+    if (res.status === 200) {
+      return true
+    }
+  } catch (error) {
+    // console.log(error)
+    return false
+  }
 }
 
 export const registerAction = async (authData) => {
-  await axios.post('/register', authData)
-  .then((res) => {console.log(res)})
-  .catch((err) => {console.log(err)});
+  try {
+    const res = await axios.post('/register', authData)
+    if (res.status === 201) {
+      return true
+    }
+  } catch (error) {
+    // console.log(error)
+    return false
+  }
 }

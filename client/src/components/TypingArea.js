@@ -51,6 +51,7 @@ const TypingArea = () => {
     } else {
       highlightWord(HIGHLIGHTED);
     }
+    // eslint-disable-next-line
   }, [input])
 
   // When current word is changed or new words are generated
@@ -60,6 +61,7 @@ const TypingArea = () => {
 
   useEffect(() => {
     highlightWord(HIGHLIGHTED);
+    // eslint-disable-next-line
   }, [currentIndex, nextWords]);
 
 
