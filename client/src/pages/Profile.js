@@ -17,7 +17,7 @@ const Login = () => {
       dispatch(setProfile(data))
     }
     fetchProfile();
-    // eslint-disalbe-next-line
+    // eslint-disable-next-line
   }, [])
 
   return (
