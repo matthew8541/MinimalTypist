@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require("path");
 
 const userRouter = require("./routes/user");
+const profileRouter = require('./routes/profile');
 
 const app = express();
 const dbUrl = process.env.ATLAS_URI
@@ -25,6 +26,7 @@ app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
 
 app.use("/", userRouter);
+app.use("/profile", profileRouter);
 
 app.get('/', (req, res) => {
   res.send('Welcome to MinimalTypist')

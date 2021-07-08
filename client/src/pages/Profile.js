@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useSelector } from 'react-redux';
+import { setProfile } from '../store/slices/authSlice';
+import { getProfile } from '../store/actions/authActions';
+
 
 const Login = () => {
   const username = useSelector(state => state.auth.username);
   const email = useSelector(state => state.auth.email);
+  const id = useSelector(state => state.auth.id);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const data = await getProfile(id)
+      dispatch(setProfile(data))
+    }
+    fetchProfile();
+    // eslint-disalbe-next-line
+  }, [])
 
   return (
     <div>

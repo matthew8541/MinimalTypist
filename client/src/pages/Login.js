@@ -9,14 +9,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAuth, setIsAuth] = useState(null)
-  // const isAuth = useSelector(state => state.counter.isAuth);
+
   const dispatch = useDispatch();
   
   const loginHandler = async (event) => {
     event.preventDefault();
-    const success = await loginAction({email, password})
-    if (success) {
-      dispatch(login())
+    const res = await loginAction({email, password})
+    if (res.status === 200) {
+      dispatch(login(res.data.result))
     } else {
       setIsAuth(false);
     }
