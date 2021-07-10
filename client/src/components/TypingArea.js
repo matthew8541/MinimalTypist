@@ -34,17 +34,20 @@ const TypingArea = () => {
 
   const materialStyles = useStyles(); // material-ui styles 
 
-  /**#########################
+  /**############################
    *          LifeCycle
-   ###########################*/
-  // componentdidmount
+   ##############################*/
+  // ComponentDidMount
   useEffect(() => {
     setCurrentWords(getNewWords());
     setNextWords(getNewWords());
 
+    // ComponentWillUnmount (Clean-Up)
+    // --> Restart typing environment
     return () => {
       restart()
     }
+    // eslint-disable-next-line
   }, [])
 
   // check whether the current input === current word
@@ -69,9 +72,9 @@ const TypingArea = () => {
   }, [currentIndex, nextWords]);
 
 
-  /**##########################
+  /**##############################
    *  Typing Helper Functions
-   ############################*/
+   ###############################*/
   const getNewWords = () => {
     const newWords = []
     for (let i = 0; i < 10; i++) {
@@ -134,9 +137,9 @@ const TypingArea = () => {
     dispatch(changeGameStatus({ type: START }));
   }
 
-  /**#########################
+  /**############################
    *      Action Handlers
-   ###########################*/
+   ##############################*/
   const inputUpdateHandler = (event) => {
     setInput(event.target.value.trim());
   }

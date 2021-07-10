@@ -9,7 +9,7 @@ const profileRouter = require('./routes/profile');
 
 const app = express();
 const dbUrl = process.env.ATLAS_URI
-mongoose.connect(dbUrl, { 
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
@@ -22,8 +22,8 @@ db.once("open", () => {
 })
 
 app.use(cors());
-app.use(express.json({ limit: '30mb', extended: true }))
-app.use(express.urlencoded({ limit: '30mb', extended: true }))
+app.use(express.json({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 
 app.use("/", userRouter);
 app.use("/profile", profileRouter);
@@ -37,8 +37,8 @@ app.get('/home', (req, res) => {
 })
 
 // Handles any requests that don't match the ones above
-app.get('*', (req, res) =>{
-  console.log("--> GET *")
+app.get('*', (req, res) => {
+  // console.log("--> GET *")
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 

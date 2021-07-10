@@ -11,22 +11,28 @@ const Login = () => {
   const [isAuth, setIsAuth] = useState(null)
 
   const dispatch = useDispatch();
-  
+
   const loginHandler = async (event) => {
     event.preventDefault();
-    const res = await loginAction({email, password})
-    if (res.status === 200) {
-      dispatch(login(res.data.result))
-    } else {
+    try {
+      const res = await loginAction({ email, password })
+      console.log("Login Page -> ", res)
+      if (res.status === 200) {
+        dispatch(login(res.data.result))
+      } else {
+        setIsAuth(false);
+      }
+    } catch (error) {
       setIsAuth(false);
+      // console.log("Error: ", error)
     }
   };
 
   let authStyle;
   if (isAuth === false) {
-    authStyle = {color: "red"}
+    authStyle = { color: "red" }
   } else {
-    authStyle = {visibility: "hidden"}
+    authStyle = { visibility: "hidden" }
   }
 
   return (

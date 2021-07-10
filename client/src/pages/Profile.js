@@ -14,9 +14,12 @@ const Login = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       const data = await getProfile(id)
+      console.log("Profile Page: ", data)
       dispatch(setProfile(data))
     }
-    fetchProfile();
+    if (!username || !email) {
+      fetchProfile();
+    }
     // eslint-disable-next-line
   }, [])
 
