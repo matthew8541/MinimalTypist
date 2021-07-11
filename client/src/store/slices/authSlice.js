@@ -29,7 +29,6 @@ const authSlice = createSlice({
       state.isLogin = true;
     },
     setProfile(state, actions) {
-      console.log(actions.payload)
       const { username, email, _id } = actions.payload;
       state.id = _id;
       state.username = username;

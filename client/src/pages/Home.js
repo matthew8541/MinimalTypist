@@ -13,6 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     return () => restart();
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {

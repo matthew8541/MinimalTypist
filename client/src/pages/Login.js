@@ -16,7 +16,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const res = await loginAction({ email, password })
-      console.log("Login Page -> ", res)
+      // console.log("Login Page -> ", res)
       if (res.status === 200) {
         dispatch(login(res.data.result))
       } else {

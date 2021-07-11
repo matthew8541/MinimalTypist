@@ -17,6 +17,7 @@ const DropDownMenu = (props) => {
       props.closeDropDown();
       // console.log(`You changed the page to: ${location.pathname}`)
    })
+   // eslint-disable-next-line
   }, [history])
   
   let dropdownClasses = ["dropdown"]

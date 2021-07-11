@@ -15,7 +15,7 @@ const Login = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       const data = await getProfileAction(id)
-      console.log("Profile Page: ", data)
+      // console.log("Profile Page: ", data)
       dispatch(setProfile(data))
     }
     if (!username || !email) {
