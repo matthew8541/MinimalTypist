@@ -14,7 +14,6 @@ import Intro from "./pages/Intro";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Ranking from "./pages/Ranking";
-import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 
 function App() {
@@ -39,7 +38,7 @@ function App() {
   return (
     <div>
       <NavBar clickDropDown={clickDropDownHandler} />
-      <DropDownMenu show={showDropDown} />
+      <DropDownMenu show={showDropDown} closeDropDown={backDropHandler}/>
       {backdrop}
       <Switch>
         <Route path="/" exact component={Intro} />
