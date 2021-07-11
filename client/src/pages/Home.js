@@ -2,14 +2,18 @@ import React, { useEffect } from 'react'
 import TypingArea from '../components/TypingArea';
 import Result from "../components/Result"
 import { useSelector, useDispatch } from 'react-redux';
-import { tictok, changeGameStatus } from '../store/slices/counterSlice';
-import { PROGRESS, OVER } from "../constants/gameStatus";
+import { tictok, changeGameStatus, resetTimer } from '../store/slices/counterSlice';
+import { START, PROGRESS, OVER } from "../constants/gameStatus";
 import "./Home.css"
 
 const Home = () => {
   const dispatch = useDispatch();
   const timer = useSelector((state) => state.counter.timer);
   const gameStatus = useSelector((state) => state.counter.gameStatus);
+
+  useEffect(() => {
+    return () => restart();
+  }, [])
 
   useEffect(() => {
     let interval = null;
@@ -23,6 +27,11 @@ const Home = () => {
     return () => clearInterval(interval);
     // eslint-disable-next-line
   }, [timer, gameStatus]);
+
+  const restart = () => {
+    dispatch(resetTimer())
+    dispatch(changeGameStatus({ type: START }));
+  }
 
   return (
     <div className="centered">

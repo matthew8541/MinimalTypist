@@ -42,11 +42,6 @@ const TypingArea = () => {
     setCurrentWords(getNewWords());
     setNextWords(getNewWords());
 
-    // ComponentWillUnmount (Clean-Up)
-    // --> Restart typing environment
-    return () => {
-      restart()
-    }
     // eslint-disable-next-line
   }, [])
 

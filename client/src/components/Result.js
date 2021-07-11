@@ -25,7 +25,7 @@ const Result = () => {
   }
 
   const keyRestart = (event) => {
-    if (event.key === " ") {
+    if (event.keyCode === 13) {
       restartHandler()
     }
   }

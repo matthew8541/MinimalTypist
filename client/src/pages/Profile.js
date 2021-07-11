@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setProfile } from '../store/slices/authSlice';
-import { getProfile } from '../store/actions/authActions';
+import { getProfileAction } from '../store/actions/authActions';
 
 
 const Login = () => {
@@ -13,7 +13,7 @@ const Login = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const data = await getProfile(id)
+      const data = await getProfileAction(id)
       console.log("Profile Page: ", data)
       dispatch(setProfile(data))
     }
