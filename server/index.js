@@ -36,6 +36,8 @@ app.get('/home', (req, res) => {
   res.send('Here is home')
 })
 
+app.put("/home", )
+
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
   // console.log("--> GET *")

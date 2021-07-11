@@ -15,18 +15,18 @@ const Login = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const data = await getProfileAction(id)
-      // console.log("Profile Page: ", data)
-      dispatch(setProfile(data))
+      const { currUser, profile } = await getProfileAction(id)
+      dispatch(setProfile({ currUser, profile }))
     }
-    if (!username || !email) {
-      fetchProfile();
-    }
+
+    fetchProfile();
+
     // eslint-disable-next-line
   }, [])
 
+
   // Loader
-  if (!username || !email) {
+  if (!(username && email && record)) {
     return <div className="middle">
       <DotLoader loading={true} size={50} color="#fff"></DotLoader>
     </div>

@@ -26,7 +26,7 @@ export const getProfileAction = async (id) => {
   try {
     const res = await axios.get(`/profile?id=${id}`);
     // console.log("getProfile: ", res)
-    return res.data.currUser;
+    return {currUser: res.data.currUser, profile: res.data.profile};
   } catch (error) {
     console.log(error)
   }

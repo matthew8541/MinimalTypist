@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const UserModel = require("../model/user");
+const ProfileModel = require("../model/profile");
 
 const secret = 'thisisasecret';
 
@@ -37,6 +38,8 @@ module.exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const result = await UserModel.create({ username, email, password: hashedPassword });
+    const profile = await ProfileModel.create({ userId: result._id, record: [] });
+    console.log(profile);
 
     const token = jwt.sign(
       { email: result.email, id: result._id },
@@ -44,7 +47,7 @@ module.exports.register = async (req, res) => {
       { expiresIn: "3h" }
     );
     // 201: The request has been fulfilled and resulted in a new resource being created.
-    res.status(201).json({ result, token });
+    res.status(201).json({ result, profile, token });
   } catch (error) {
     // 500: Internal Server Error
     res.status(500).json({ message: "Something went wrong" });

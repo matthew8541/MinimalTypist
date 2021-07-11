@@ -30,10 +30,13 @@ const authSlice = createSlice({
       state.isLogin = true;
     },
     setProfile(state, action) {
-      const { username, email, _id } = action.payload;
+      const { currUser, profile } = action.payload;
+      const { email, username, _id } = currUser;
+      const { record } = profile;
       state.id = _id;
       state.username = username;
       state.email = email;
+      state.record = record;
     },
     newRecord(state, action) {
       const { wpm, accuracy, date } = action.payload;
