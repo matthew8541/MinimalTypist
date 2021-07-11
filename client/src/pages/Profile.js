@@ -24,6 +24,7 @@ const Login = () => {
     // eslint-disable-next-line
   }, [])
 
+  // Loader
   if (!username || !email) {
     return <div className="middle">
       <DotLoader loading={true} size={50} color="#fff"></DotLoader>

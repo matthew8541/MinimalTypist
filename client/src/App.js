@@ -50,9 +50,13 @@ function App() {
         <Route path="/login">
           {!isLogin ? <Login /> : <Redirect to="/home" />}
         </Route>
-        <Route path="/ranking" component={Ranking} />
-        <Route path="/profile" component={Profile} />
-        <Route path='*' component={NotFound} />
+        <Route path="/ranking">
+          {isLogin ? <Ranking /> : <Redirect to="/" />}
+        </Route>
+        <Route path="/profile">
+          {isLogin ? <Profile /> : <Redirect to="/" />}
+        </Route>
+        <Route path='*' component={() => <Redirect to="/" />} />
       </Switch>
     </div>
   );
