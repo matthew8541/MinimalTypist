@@ -25,6 +25,12 @@ body {
   align-items: center;
 }
 
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 .focused {
   font-size: 3rem;
   font-weight: bold;

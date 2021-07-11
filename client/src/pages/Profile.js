@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import DotLoader from "react-spinners/DotLoader";
 
 import { setProfile } from '../store/slices/authSlice';
 import { getProfileAction } from '../store/actions/authActions';
@@ -22,6 +23,12 @@ const Login = () => {
     }
     // eslint-disable-next-line
   }, [])
+
+  if (!username || !email) {
+    return <div className="middle">
+      <DotLoader loading={true} size={50} color="#fff"></DotLoader>
+    </div>
+  }
 
   return (
     <div>
