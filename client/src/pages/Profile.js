@@ -10,6 +10,7 @@ const Login = () => {
   const username = useSelector(state => state.auth.username);
   const email = useSelector(state => state.auth.email);
   const id = useSelector(state => state.auth.id);
+  const record = useSelector(state => state.auth.record);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,6 +37,12 @@ const Login = () => {
       <h1 className="centered">Profile Page</h1>
       <h3 className="centered">Username: {username}</h3>
       <h3 className="centered">Email: {email}</h3>
+      <h3 className="centered">Record</h3>
+      <ul className="centered">
+        {record.map((rec, index) =>
+          <li key={index}>WPM: {rec.wpm} Accuracy: {rec.accuracy}% Date: {rec.date}</li>
+        )}
+      </ul>
     </div>
   );
 }

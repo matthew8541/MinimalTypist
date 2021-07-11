@@ -5,14 +5,15 @@ const initialState = {
   isLogin: false,
   username: null,
   email: null,
+  record: []
 }
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login(state, actions) {
-      const { _id } = actions.payload;
+    login(state, action) {
+      const { _id } = action.payload;
       state.id = _id;
       state.isLogin = true;
     },
@@ -22,17 +23,21 @@ const authSlice = createSlice({
       state.username = null;
       state.email = null;
     },
-    register(state, actions) {
-      const { username, email } = actions.payload;
+    register(state, action) {
+      const { username, email } = action.payload;
       state.username = username;
       state.email = email;
       state.isLogin = true;
     },
-    setProfile(state, actions) {
-      const { username, email, _id } = actions.payload;
+    setProfile(state, action) {
+      const { username, email, _id } = action.payload;
       state.id = _id;
       state.username = username;
       state.email = email;
+    },
+    newRecord(state, action) {
+      const { wpm, accuracy, date } = action.payload;
+      state.record.unshift({ wpm, accuracy, date });
     }
   },
 })
@@ -41,7 +46,8 @@ export const {
   login,
   logout,
   register,
-  setProfile
+  setProfile,
+  newRecord
 } = authSlice.actions
 
 export default authSlice.reducer
