@@ -103,3 +103,14 @@ body {
   border: 1px solid #ccc;
   height: 2rem;
 }
+
+@media screen and (max-width: 760px) {
+  .userCard {
+    margin-top: 30%;
+    width: 75%;
+  }
+
+  .userCard form {
+    padding: 0%;
+  }
+}
