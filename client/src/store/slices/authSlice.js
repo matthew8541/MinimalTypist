@@ -42,7 +42,7 @@ const authSlice = createSlice({
       const { wpm, accuracy, date } = action.payload;
       state.record.unshift({ wpm, accuracy, date });
     }
-  },
+  }
 })
 
 export const {

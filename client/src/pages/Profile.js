@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DotLoader from "react-spinners/DotLoader";
 
 import { setProfile } from '../store/slices/authSlice';
-import { getProfileAction } from '../store/actions/authActions';
-
+import { getProfileAction } from '../store/actions/profileActions';
 
 const Login = () => {
   const username = useSelector(state => state.auth.username);
@@ -18,7 +17,7 @@ const Login = () => {
       const { currUser, profile } = await getProfileAction(id)
       dispatch(setProfile({ currUser, profile }))
     }
-
+    
     fetchProfile();
 
     // eslint-disable-next-line

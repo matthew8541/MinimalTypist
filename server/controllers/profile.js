@@ -14,3 +14,18 @@ module.exports.findProfile = async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 }
+
+module.exports.updateRecord = async (req, res) => {
+  const { userId, newRecord } = req.body;
+  try {
+    // console.log(`Client Side-> userId: ${userId},  newRecord: ${newRecord}`);
+    await ProfileModel.findOneAndUpdate({
+      userId: userId
+    },
+      { $push: { record: newRecord, $position: 0 } },
+    );
+  } catch (error) {
+    console.log(error)
+  }
+}
+

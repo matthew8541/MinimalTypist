@@ -7,7 +7,7 @@ const ProfileSchema = new Schema({
     ref: "User"
   },
   record: [{
-    wpn: { type: Number },
+    wpm: { type: Number },
     accuracy: { type: Number },
     date: { type: String }
   }]

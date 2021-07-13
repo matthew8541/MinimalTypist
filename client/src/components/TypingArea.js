@@ -13,9 +13,6 @@ const useStyles = makeStyles({
     alignSelf: "center",
     fontSize: 24,
     margin: '30px 30px'
-  },
-  button: {
-
   }
 })
 

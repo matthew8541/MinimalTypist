@@ -12,7 +12,8 @@ const dbUrl = process.env.ATLAS_URI
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useCreateIndex: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 const db = mongoose.connection;
@@ -26,7 +27,7 @@ app.use(express.json({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 
 app.use("/", userRouter);
-app.use("/profile", profileRouter);
+app.use("/", profileRouter);
 
 app.get('/', (req, res) => {
   res.send('Welcome to MinimalTypist')
@@ -35,8 +36,6 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
   res.send('Here is home')
 })
-
-app.put("/home", )
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
