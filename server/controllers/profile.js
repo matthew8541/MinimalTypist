@@ -22,7 +22,14 @@ module.exports.updateRecord = async (req, res) => {
     await ProfileModel.findOneAndUpdate({
       userId: userId
     },
-      { $push: { record: newRecord, $position: 0 } },
+      { 
+        $push: {
+          record: {
+           $each: [newRecord],
+           $position: 0
+          }
+        }
+      },
     );
   } catch (error) {
     console.log(error)
