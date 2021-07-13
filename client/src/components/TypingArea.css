@@ -2,7 +2,7 @@
     padding: 3px;
     margin: 3px;
     /* font-size: 1.3rem; */
-    font-size: clamp(0.5rem, 2.5vw, 3rem); 
+    font-size: clamp(0.5rem, 2.5vw, 2rem); 
 }
 
 .word.new {

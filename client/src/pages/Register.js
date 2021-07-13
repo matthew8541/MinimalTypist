@@ -25,9 +25,9 @@ const Register = () => {
 
   let validStyle;
   if (isValid === false) {
-    validStyle = { color: "red" }
+    validStyle = { color: "red", fontSize: "12px" }
   } else {
-    validStyle = { visibility: "hidden" }
+    validStyle = { visibility: "hidden", fontSize: "12px" }
   }
 
   return (

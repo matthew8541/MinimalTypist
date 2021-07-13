@@ -8,13 +8,13 @@ body {
   color: #fff;
   background-color: #292D33;
   min-width: 375px;
-  /* background-image: url("./images/intro.jpeg"); */
 }
 
 .intro-body {
   background-image: url("./images/intro.jpeg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-position: top center;
+  background-attachment: fixed;
 }
 
 .centered {
@@ -73,19 +73,14 @@ body {
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
   background-color: #FFA500;
   border-radius: 1rem;
-  width: 50%;
-  margin: 2rem auto;
-  /* text-align: center; */
-  display: flex;
-  flex-direction: column;
-  /* align-items: flex-start; */
-  /* justify-content: center; */
+  width: 40%;
+  margin: 10% auto;
   padding: 3%;
 }
 
 .userCard form {
   width: 100%;
-  padding: 0% 20%;
+  padding: 0% 10%;
 }
 
 .userCard div {
@@ -106,10 +101,9 @@ body {
 
 @media screen and (max-width: 760px) {
   .userCard {
-    margin-top: 30%;
+    margin-top: 20%;
     width: 75%;
   }
-
   .userCard form {
     padding: 0%;
   }

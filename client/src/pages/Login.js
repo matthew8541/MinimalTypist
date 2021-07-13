@@ -30,9 +30,9 @@ const Login = () => {
 
   let authStyle;
   if (isAuth === false) {
-    authStyle = { color: "red" }
+    authStyle = { color: "red", fontSize: "12px" }
   } else {
-    authStyle = { visibility: "hidden" }
+    authStyle = { visibility: "hidden", fontSize: "12px" }
   }
 
   return (
