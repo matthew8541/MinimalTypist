@@ -22,6 +22,7 @@ const authSlice = createSlice({
       state.isLogin = false;
       state.username = null;
       state.email = null;
+      state.record = []
     },
     register(state, action) {
       const { username, email } = action.payload;
