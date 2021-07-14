@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Switch,
   Route,
@@ -16,7 +16,17 @@ import Register from "./pages/Register";
 import Ranking from "./pages/Ranking";
 import Profile from "./pages/Profile";
 
+import { login } from './store/slices/authSlice';
+
 function App() {
+  const userId = localStorage.getItem('profile');
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (userId) {
+      dispatch(login({_id: userId}));
+    }
+  }, [])
+
   const [showDropDown, setShowDropDown] = useState(false);
 
   const isLogin = useSelector(state => state.auth.isLogin);

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import DotLoader from "react-spinners/DotLoader";
+import { useHistory } from "react-router-dom";
 
 import { setProfile } from '../store/slices/authSlice';
 import { getProfileAction } from '../store/actions/profileActions';
@@ -10,12 +11,15 @@ const Login = () => {
   const email = useSelector(state => state.auth.email);
   const id = useSelector(state => state.auth.id);
   const records = useSelector(state => state.auth.record);
+
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const { currUser, profile } = await getProfileAction(id)
-      dispatch(setProfile({ currUser, profile }))
+      const { currUser, profile } = await getProfileAction(id);
+      dispatch(setProfile({ currUser, profile }));
+      history.push(`?id=${id}`);
     }
     
     fetchProfile();
