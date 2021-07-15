@@ -25,7 +25,7 @@ export const registerAction = async (authData) => {
   }
 }
 
-export const checkLoggedIn = async () => {
+export const checkLoggedIn = async (dispatch, login) => {
   let token = localStorage.getItem("auth-token");
   if (token === null) {
     localStorage.setItem("auth-token", "");
@@ -37,10 +37,7 @@ export const checkLoggedIn = async () => {
       const userRes = await axios.get("/users", {
         headers: { "x-auth-token": token },
       });
-      return {
-        token,
-        user: userRes.data.user
-      };
+      dispatch(login(userRes.data.user));
     }
   } catch (error) {
     console.log(error);

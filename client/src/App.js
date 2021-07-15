@@ -22,15 +22,7 @@ import { checkLoggedIn } from "./store/actions/authActions";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    const loginData = async () => {
-      const res = await checkLoggedIn();
-      console.log("App Main Page: ", res);
-      if (res) {
-        const { user } = res;
-        dispatch(login(user));
-      }
-    }
-    loginData()
+    checkLoggedIn(dispatch, login);
   }, [])
 
   const [showDropDown, setShowDropDown] = useState(false);
