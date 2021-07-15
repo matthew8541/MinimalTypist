@@ -18,6 +18,7 @@ const Login = () => {
       const res = await loginAction({ email, password })
       // console.log("Login Page -> ", res)
       if (res.status === 200) {
+        localStorage.setItem("auth-token", res.data.token);
         dispatch(login(res.data.result))
       } else {
         setIsAuth(false);

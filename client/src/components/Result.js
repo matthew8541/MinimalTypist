@@ -3,7 +3,6 @@ import { Button } from '@material-ui/core';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { changeGameStatus, resetTimer, setTotalWords } from '../store/slices/counterSlice';
-import { newRecord } from "../store/slices/authSlice";
 import { updateRecordAction } from '../store/actions/profileActions';
 import { TIME } from '../constants/gameStatus';
 
@@ -12,7 +11,6 @@ const Result = () => {
   const id = useSelector(state => state.auth.id);
   const totalWords = useSelector(state => state.counter.totalWords);
   const correctWords = useSelector(state => state.counter.correctWords);
-  const record = useSelector(state => state.auth.record);
 
   const dispatch = useDispatch();
 

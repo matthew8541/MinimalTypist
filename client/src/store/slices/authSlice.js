@@ -16,7 +16,6 @@ const authSlice = createSlice({
       const { _id } = action.payload;
       state.id = _id;
       state.isLogin = true;
-      localStorage.setItem('profile', _id);
     },
     logout(state) {
       state.id = "";

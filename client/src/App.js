@@ -17,14 +17,20 @@ import Ranking from "./pages/Ranking";
 import Profile from "./pages/Profile";
 
 import { login } from './store/slices/authSlice';
+import { checkLoggedIn } from "./store/actions/authActions";
 
 function App() {
-  const userId = localStorage.getItem('profile');
   const dispatch = useDispatch();
   useEffect(() => {
-    if (userId) {
-      dispatch(login({_id: userId}));
+    const loginData = async () => {
+      const res = await checkLoggedIn();
+      console.log("App Main Page: ", res);
+      if (res) {
+        const { user } = res;
+        dispatch(login(user));
+      }
     }
+    loginData()
   }, [])
 
   const [showDropDown, setShowDropDown] = useState(false);
@@ -48,7 +54,7 @@ function App() {
   return (
     <div>
       <NavBar clickDropDown={clickDropDownHandler} />
-      <DropDownMenu show={showDropDown} closeDropDown={backDropHandler}/>
+      <DropDownMenu show={showDropDown} closeDropDown={backDropHandler} />
       {backdrop}
       <Switch>
         <Route path="/" exact component={Intro} />
