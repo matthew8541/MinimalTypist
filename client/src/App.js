@@ -20,15 +20,14 @@ import { login } from './store/slices/authSlice';
 import { checkLoggedIn } from "./store/actions/authActions";
 
 function App() {
+  const [showDropDown, setShowDropDown] = useState(false);
+  const isLogin = useSelector(state => state.auth.isLogin);
   const dispatch = useDispatch();
+
   useEffect(() => {
     checkLoggedIn(dispatch, login);
   }, [])
-
-  const [showDropDown, setShowDropDown] = useState(false);
-
-  const isLogin = useSelector(state => state.auth.isLogin);
-
+  
   const clickDropDownHandler = () => {
     setShowDropDown((prevState) => !prevState)
   }

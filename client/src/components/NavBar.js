@@ -18,53 +18,7 @@ const NavBar = (props) => {
       <div >
         <NavLink to='/' className={classes.logo}>MinimalTypist</NavLink>
       </div>
-      {isLogin ? (
-        <nav className={classes.nav}>
-          <ul>
-            <li>
-              <NavLink to='/home' activeClassName={classes.active}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to='/ranking' activeClassName={classes.active}>
-                Rank
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink to='/profile' activeClassName={classes.active}>
-                Profile
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/" onClick={logoutHandler}>
-                Logout
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      ) : (
-        <nav className={classes.nav}>
-          <ul>
-            <li>
-              <NavLink to='/home' activeClassName={classes.active}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to='/login' activeClassName={classes.active}>
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to='/register' activeClassName={classes.active}>
-                Register
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      )}
+      {isLogin ?  <LoginNavBar logout={logoutHandler}/>: <VisitorNavBar />}
       <Hamburger click={props.clickDropDown} />
     </header>
   );
@@ -79,3 +33,57 @@ const Hamburger = props => (
     <div />
   </button>
 );
+
+const LoginNavBar = (props) => {
+  return (
+    <nav className={classes.nav}>
+      <ul>
+        <li>
+          <NavLink to='/home' activeClassName={classes.active}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/ranking' activeClassName={classes.active}>
+            Rank
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to='/profile' activeClassName={classes.active}>
+            Profile
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/" onClick={props.logout}>
+            Logout
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  )
+};
+
+const VisitorNavBar = () => {
+  return (
+    <nav className={classes.nav}>
+      <ul>
+        <li>
+          <NavLink to='/home' activeClassName={classes.active}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/login' activeClassName={classes.active}>
+            Login
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/register' activeClassName={classes.active}>
+            Register
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  )
+};
