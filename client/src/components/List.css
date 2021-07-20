@@ -1,0 +1,21 @@
+.list-box {
+    width: 40%;
+    height: 100%;
+    border: 1px solid white;
+    display: flex;
+  }
+  
+  .inner-box {
+    width: 33.33%;
+  }
+  
+  .list-box a {
+    font-size: clamp(0.5rem, 2.5vw, 1rem);
+    margin: 0.5vh 2vh;
+  }
+
+  @media screen and (max-width: 760px) {
+    .list-box {
+      width: 90%;
+    }
+  }

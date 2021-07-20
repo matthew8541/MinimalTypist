@@ -26,6 +26,7 @@ function App() {
 
   useEffect(() => {
     checkLoggedIn(dispatch, login);
+    // eslint-disable-next-line
   }, [])
   
   const clickDropDownHandler = () => {

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DotLoader from "react-spinners/DotLoader";
 import { useHistory } from "react-router-dom";
 
+import List from '../components/List';
 import { setProfile } from '../store/slices/authSlice';
 import { getProfileAction } from '../store/actions/profileActions';
 
@@ -21,7 +22,7 @@ const Login = () => {
       dispatch(setProfile({ currUser, profile }));
       history.push(`?id=${id}`);
     }
-    
+
     fetchProfile();
 
     // eslint-disable-next-line
@@ -37,15 +38,21 @@ const Login = () => {
 
   return (
     <div>
-      <h1 className="centered">Profile Page</h1>
+      <h2 className="centered">Profile</h2>
       <h3 className="centered">Username: {username}</h3>
       <h3 className="centered">Email: {email}</h3>
-      <h3 className="centered">Record</h3>
-      <ul className="centered">
+      <div className='centered'>
+        <h3>Record</h3>
+        <List record={{wpm: "WPM", accuracy: "Accuracy", date: "Date"}} />
+        {records.map((record, index) =>
+          <List key={index} record={record} />
+        )}
+      </div>
+      {/* <ul className="centered">
         {records.map((record, index) =>
           <li key={index}>WPM: {record.wpm} Accuracy: {record.accuracy}% Date: {record.date}</li>
         )}
-      </ul>
+      </ul> */}
     </div>
   );
 }
