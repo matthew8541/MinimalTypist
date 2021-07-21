@@ -30,13 +30,13 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.use("/", userRouter);
 app.use("/", profileRouter);
 
-app.get('/', (req, res) => {
-  res.send('Welcome to MinimalTypist')
-})
+// app.get('/', (req, res) => {
+//   res.send('Welcome to MinimalTypist')
+// })
 
-app.get('/home', (req, res) => {
-  res.send('Here is home')
-})
+// app.get('/home', (req, res) => {
+//   res.send('Here is home')
+// })
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
