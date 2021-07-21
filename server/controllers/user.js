@@ -37,7 +37,6 @@ module.exports.register = async (req, res) => {
 
     const result = await UserModel.create({ username, email, password: hashedPassword });
     const profile = await ProfileModel.create({ userId: result._id, record: [] });
-    console.log(profile);
 
     const token = jwt.sign(
       { email: result.email, id: result._id },

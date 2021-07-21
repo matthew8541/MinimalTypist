@@ -57,9 +57,9 @@ function App() {
         <Route path="/login">
           {!isLogin ? <Login /> : <Redirect to="/home" />}
         </Route>
-        <Route path="/ranking">
+        {/* <Route path="/ranking">
           {isLogin ? <Ranking /> : <Redirect to="/" />}
-        </Route>
+        </Route> */}
         <Route path="/profile">
           {isLogin ? <Profile /> : <Redirect to="/" />}
         </Route>

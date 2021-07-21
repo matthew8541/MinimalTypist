@@ -37,9 +37,9 @@ const DropDownMenu = (props) => {
           <li>
             <NavLink to='/home' className="link"> Home </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to='/ranking' className="link"> Rank </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to='/profile' className="link"> Profile </NavLink>
           </li>

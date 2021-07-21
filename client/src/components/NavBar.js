@@ -43,11 +43,11 @@ const LoginNavBar = (props) => {
             Home
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to='/ranking' activeClassName={classes.active}>
             Rank
           </NavLink>
-        </li>
+        </li> */}
 
         <li>
           <NavLink to='/profile' activeClassName={classes.active}>
