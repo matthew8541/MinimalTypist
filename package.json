@@ -8,10 +8,9 @@
     "build": "concurrently \"cd client && npm run build\" \"npm build \"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd ./client && npm start ",
-    "server-prod": "node index.js --prefix server",
     "server": "nodemon index.js --prefix server",
     "start": "concurrently --kill-others  \"npm run client\" \"npm run server\" ",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
