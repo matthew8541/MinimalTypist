@@ -25,7 +25,7 @@ db.once("open", () => {
 app.use(cors());
 app.use(express.json({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.use("/", userRouter);
 app.use("/", profileRouter);
@@ -41,7 +41,7 @@ app.use("/", profileRouter);
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
   // console.log("--> GET *")
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 const port = process.env.PORT || 5000;
