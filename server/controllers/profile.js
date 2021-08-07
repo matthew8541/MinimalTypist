@@ -9,6 +9,7 @@ module.exports.findProfile = async (req, res) => {
     // console.log("currUser: ", currUser);
     // 200: ok
     res.status(200).json({ currUser, profile });
+    // next();
   } catch (err) {
     // 500: Internal Server Error
     res.status(500).json({ message: "Something went wrong" });
